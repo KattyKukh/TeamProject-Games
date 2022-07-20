@@ -31,13 +31,15 @@ public class GameStore {
     /**
      * Проверяет наличие игры в каталоге и возврашает true
      * если игра есть и false иначе
+     *
+     * @return
      */
     public boolean containsGame(Game game) {
-        for (int i = 1; i < games.size(); i++)
+        for (int i = 1; i <= games.size(); i++) {
             if (games.get(i - 1).equals(game)) {
                 return true;
-            } else {
             }
+        }
         return false;
     }
 
@@ -80,3 +82,10 @@ public class GameStore {
         return 0;
     }
 }
+
+// public boolean containsGame(Game game) {
+//    int i;
+//    for (i = 1; i < games.size(); i++)
+//         return true;
+//     return games.get(i - 1).equals(game);
+//  }

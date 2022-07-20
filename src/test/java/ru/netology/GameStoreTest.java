@@ -14,12 +14,29 @@ public class GameStoreTest {
     public void shouldAddGame() {
 
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        store.addPlayTime("Vasya", 120);
+        Player player1 = new Player("Vasya");
+        player1.installGame(game);
         assertTrue(store.containsGame(game));
 //      Если был getter для games, можно было бы чище тестировать именно добавление игры в каталог, без использования поиска.
 //      Вот так:
 //        ArrayList<Game> expected = new ArrayList<>();
 //        expected.add(0, new Game("Нетология Баттл Онлайн", "Аркады", store));
 //        assertEquals(expected,store.getGames());
+
+    }
+
+    @Test
+    public void shouldAddGameZero() {
+
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        store.addPlayTime("Vasya", 0);
+
+        Player player1 = new Player("Vasya");
+        player1.installGame(game);
+        store.containsGame(null);
+        assertTrue(store.containsGame(game));
+
 
     }
 
@@ -139,11 +156,5 @@ public class GameStoreTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void shouldContainsGame() {
-
-        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-        assertTrue(store.containsGame(game)); //мой тест
-    }
 
 }
