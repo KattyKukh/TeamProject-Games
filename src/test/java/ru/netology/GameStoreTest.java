@@ -87,11 +87,19 @@ public class GameStoreTest {
         player1.installGame(game);
         player2.installGame(game);
         player3.installGame(game);
-        player1.play(game, 1);
-        player2.play(game, 5);
-        player3.play(game, 3);
+        player1.play(game, 0);
+        player2.play(game, 1);
+        player3.play(game, 0);
 
         String expected = "Second";
+        String actual = store.getMostPlayer();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindBestPlayerZero() {
+        Game game = store.publishGame("Netology Test Quest", "Квесты");
+        String expected = null;
         String actual = store.getMostPlayer();
         assertEquals(expected, actual);
     }
@@ -130,4 +138,12 @@ public class GameStoreTest {
         int actual = store.getSumPlayedTime();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void shouldContainsGame() {
+
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        assertTrue(store.containsGame(game)); //мой тест
+    }
+
 }

@@ -6,20 +6,23 @@ import java.util.List;
 import java.util.Map;
 
 public class GameStore {
-    private List<Game> games = new ArrayList<>();
+    List<Game> games = new ArrayList<>();
 
     /**
      * Информация о том, какой игрок сколько играл в игры этого каталога
      * Ключ - имя игрока
      * Значение - суммарное количество часов в игры этого каталога
      */
-    private Map<String, Integer> playedTime = new HashMap<>();
+
+
+    Map<String, Integer> playedTime = new HashMap<>();
+
 
     /**
      * Создание объекта игры с заданными заголовком и жанром
      * Каждый объект игры помнит объект каталога, которому она принадлежит
      */
-    public Game publishGame(String title, String genre) {
+    protected Game publishGame(String title, String genre) {
         Game game = new Game(title, genre, this);
         games.add(game);
         return game;
@@ -30,13 +33,14 @@ public class GameStore {
      * если игра есть и false иначе
      */
     public boolean containsGame(Game game) {
-        for (int i = 1; i < games.size(); i++) {
+        for (int i = 1; i < games.size(); i++)
             if (games.get(i - 1).equals(game)) {
                 return true;
+            } else {
             }
-        }
         return false;
     }
+
 
     /**
      * Регистрирует количество времени, которое проиграл игрок
@@ -60,7 +64,7 @@ public class GameStore {
         String bestPlayer = null;
         for (String playerName : playedTime.keySet()) {
             int playerTime = playedTime.get(playerName);
-            if (playerTime > mostTime) {
+            if (playerTime >= mostTime) {
                 mostTime = playerTime;
                 bestPlayer = playerName;
             }
