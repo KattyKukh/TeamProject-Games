@@ -53,6 +53,16 @@ public class GameStoreTest {
     }
 
     @Test
+    public void shouldNotFindIfGameNotInStore() {
+        store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game game1 = new Game("Netology Test Quest", "Квесты", new GameStore());
+        store.publishGame("Нетология Шутинг Гейм", "Шутеры");
+        store.publishGame("Netology Adventure", "Приключения");
+        assertTrue(!store.containsGame(game1));
+
+    }
+
+    @Test
     public void shouldAddPlayTime() {
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
         Player player1 = new Player("First");
