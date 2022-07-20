@@ -14,12 +14,29 @@ public class GameStoreTest {
     public void shouldAddGame() {
 
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        store.addPlayTime("Vasya", 120);
+        Player player1 = new Player("Vasya");
+        player1.installGame(game);
         assertTrue(store.containsGame(game));
 //      Если был getter для games, можно было бы чище тестировать именно добавление игры в каталог, без использования поиска.
 //      Вот так:
 //        ArrayList<Game> expected = new ArrayList<>();
 //        expected.add(0, new Game("Нетология Баттл Онлайн", "Аркады", store));
 //        assertEquals(expected,store.getGames());
+
+    }
+
+    @Test
+    public void shouldAddGameZero() {
+
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        store.addPlayTime("Vasya", 0);
+
+        Player player1 = new Player("Vasya");
+        player1.installGame(game);
+        store.containsGame(null);
+        assertTrue(store.containsGame(game));
+
 
     }
 
@@ -97,11 +114,19 @@ public class GameStoreTest {
         player1.installGame(game);
         player2.installGame(game);
         player3.installGame(game);
-        player1.play(game, 1);
-        player2.play(game, 5);
-        player3.play(game, 3);
+        player1.play(game, 0);
+        player2.play(game, 1);
+        player3.play(game, 0);
 
         String expected = "Second";
+        String actual = store.getMostPlayer();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindBestPlayerZero() {
+        Game game = store.publishGame("Netology Test Quest", "Квесты");
+        String expected = null;
         String actual = store.getMostPlayer();
         assertEquals(expected, actual);
     }
@@ -140,4 +165,6 @@ public class GameStoreTest {
         int actual = store.getSumPlayedTime();
         assertEquals(expected, actual);
     }
+
+
 }
