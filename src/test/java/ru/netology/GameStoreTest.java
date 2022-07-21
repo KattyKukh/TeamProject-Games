@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class GameStoreTest {
 
@@ -73,10 +74,24 @@ public class GameStoreTest {
     public void shouldAddPlayTime() {
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
         Player player1 = new Player("First");
+        Player player2 = new Player("Second");
+        player1.installGame(game);
+        store.addPlayTime(player1.getName(), 2);
+        store.getSumPlayedTime();
+        store.addPlayTime(player2.getName(), 4);
+        int expected = 2;
+        int actual = store.addPlayTime("First", 8);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldAddPlayTimeMy() {
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Player player1 = new Player("First");
         player1.installGame(game);
         player1.play(game, 1);
         store.addPlayTime(player1.getName(), 2);
-
+        player1.play(game, 2);
         int expected = 3;
         int actual = store.getSumPlayedTime();
         assertEquals(expected, actual);
@@ -90,8 +105,8 @@ public class GameStoreTest {
         player1.play(game, 1);
         store.addPlayTime(player1.getName(), -2);
 
-        int expected = 1;
-        int actual = store.getSumPlayedTime();
+        int expected = 3;
+        int actual = store.addPlayTime("First", 3);
         assertEquals(expected, actual);
     }
 
@@ -149,9 +164,9 @@ public class GameStoreTest {
         player3.installGame(game);
         player1.play(game, 1);
         player2.play(game, 2);
-        player3.play(game, 3);
+        player3.play(game, 7);
 
-        int expected = 6;
+        int expected = 10;
         int actual = store.getSumPlayedTime();
         assertEquals(expected, actual);
     }
