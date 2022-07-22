@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class GameStoreTest {
 
@@ -19,11 +20,7 @@ public class GameStoreTest {
         Player player1 = new Player("Vasya");
         player1.installGame(game);
         assertTrue(store.containsGame(game));
-//      Если был getter для games, можно было бы чище тестировать именно добавление игры в каталог, без использования поиска.
-//      Вот так:
-//        ArrayList<Game> expected = new ArrayList<>();
-//        expected.add(0, new Game("Нетология Баттл Онлайн", "Аркады", store));
-//        assertEquals(expected,store.getGames());
+
 
     }
 
@@ -81,44 +78,21 @@ public class GameStoreTest {
     }
 
     @Test
+
     public void shouldAddPlayTime() {
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
         Player player1 = new Player("First");
         Player player2 = new Player("Second");
         player1.installGame(game);
+        player1.play(game, 12);
         store.addPlayTime(player1.getName(), 2);
-        store.getSumPlayedTime();
-        store.addPlayTime(player2.getName(), 4);
-        int expected = 2;
-        int actual = store.addPlayTime("First", 8);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldAddPlayTimeMy() {
-        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-        Player player1 = new Player("First");
-        player1.installGame(game);
-        player1.play(game, 1);
-        store.addPlayTime(player1.getName(), 2);
-        player1.play(game, 2);
-        int expected = 3;
+        player2.play(game, 13);
+        store.addPlayTime(player2.getName(), 3);
+        int expected = 30;
         int actual = store.getSumPlayedTime();
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void shouldNotAddPlayTimeIfNegative() {
-        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-        Player player1 = new Player("First");
-        player1.installGame(game);
-        player1.play(game, 1);
-        store.addPlayTime(player1.getName(), -2);
-
-        int expected = 3;
-        int actual = store.addPlayTime("First", 3);
-        assertEquals(expected, actual);
-    }
 
     @Test
     public void shouldFindBestPlayer() {

@@ -50,8 +50,8 @@ public class PlayerTest {
         player.installGame(game3);
         player.play(game2, 1);
         String expected = "Нетология Баттл Онлайн";
-        player.mostPlayerByGenre("Аркады");
-        Game actual = player.mostPlayerByGenre("Аркады");
+        player.mostGameByGenre("Аркады");
+        Game actual = player.mostGameByGenre("Аркады");
         assertEquals(expected, actual);
     }
 
@@ -69,8 +69,8 @@ public class PlayerTest {
         player.installGame(game3);
         player.play(game3, 0);
         String expected = null;
-        player.mostPlayerByGenre("Аркады");
-        Game actual = player.mostPlayerByGenre("Аркады");
+        player.mostGameByGenre("Аркады");
+        Game actual = player.mostGameByGenre("Аркады");
         assertEquals(expected, actual);
     }
 
@@ -81,9 +81,9 @@ public class PlayerTest {
         Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
         player.installGame(game1);
         player.play(game1, 5);
-        player.mostPlayerByGenre("Аркады");
+        player.mostGameByGenre("Аркады");
         String expected = "Нетология Баттл Онлайн";
-        Game actual = player.mostPlayerByGenre("Аркады");
+        Game actual = player.mostGameByGenre("Аркады");
         assertEquals(expected, actual);
     }
 
