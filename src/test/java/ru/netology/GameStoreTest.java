@@ -86,6 +86,7 @@ public class GameStoreTest {
         player1.installGame(game);
         player1.play(game, 12);
         store.addPlayTime(player1.getName(), 2);
+        player2.installGame(game);
         player2.play(game, 13);
         store.addPlayTime(player2.getName(), 3);
         int expected = 30;
