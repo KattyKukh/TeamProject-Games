@@ -1,27 +1,27 @@
-package ru.netology;
+//package ru.netology;
 
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+//import java.util.ArrayList;
+//import java.util.HashMap;
+//import java.util.List;
+//import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class PlayerTest {
-    private Map<Game, Integer> playedTime = new HashMap<>();
-    private List<Game> games = new ArrayList<>();
-    GameStore store = new GameStore();
-    Player player1 = new Player("Petya");
-    Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-    Player player2 = new Player("Petya");
-    Game game2 = store.publishGame("Баттл Онлайн", "Аркады");
-    Player player3 = new Player("Petya");
-    Game game3 = store.publishGame("Баттл", "Шутер");
-    Player player4 = new Player("Petya");
-    Game game4 = store.publishGame("Онлайн", "Рпг");
+//public class PlayerTest {
+   // private Map<Game, Integer> playedTime = new HashMap<>();
+   // private List<Game> games = new ArrayList<>();
+   // GameStore store = new GameStore();
+   // Player player1 = new Player("Petya");
+   // Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+   // Player player2 = new Player("Petya");
+    //Game game2 = store.publishGame("Баттл Онлайн", "Аркады");
+    //Player player3 = new Player("Petya");
+   // Game game3 = store.publishGame("Баттл", "Шутер");
+    //Player player4 = new Player("Petya");
+   // Game game4 = store.publishGame("Онлайн", "Рпг");
 
     //@Test
    // public void shouldSumGenreIfOneGame() {
@@ -55,24 +55,24 @@ public class PlayerTest {
      //   assertEquals(expected, actual);
     //}
 
-    @Test
-    public void shouldGameMostPlayerByGenreZero() {
-        GameStore store = new GameStore();
-        Player player = new Player("Petya");
-        Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-        player.installGame(game1);
-        player.play(game1, 0);
-        Game game2 = store.publishGame("Баттл Онлайн", "Аркады");
-        player.installGame(game2);
-        player.play(game2, 0);
-        Game game3 = store.publishGame("Баттл", "Шутер");
-        player.installGame(game3);
-        player.play(game3, 0);
-        String expected = null;
-        player.mostGameByGenre("Аркады");
-        Game actual = player.mostGameByGenre("Аркады");
-        assertEquals(expected, actual);
-    }
+    //@Test
+   // public void shouldGameMostPlayerByGenreZero() {
+       // GameStore store = new GameStore();
+       // Player player = new Player("Petya");
+        //Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+       // player.installGame(game1);
+       // player.play(game1, 0);
+       // Game game2 = store.publishGame("Баттл Онлайн", "Аркады");
+       // player.installGame(game2);
+        //player.play(game2, 0);
+        //Game game3 = store.publishGame("Баттл", "Шутер");
+        //player.installGame(game3);
+        //player.play(game3, 0);
+        //String expected = null;
+        //player.mostGameByGenre("Аркады");
+        //Game actual = player.mostGameByGenre("Аркады");
+        //assertEquals(expected, actual);
+   // }
 
    // @Test
    // public void shouldGameMostPlayerByGenreOne() {
@@ -117,25 +117,25 @@ public class PlayerTest {
       //  assertEquals(expected, actual);
    // }
 
-    @Test
-    public void shouldInstallTwo() {
-        Player player = new Player("Vasya");
-        Game g1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-        playedTime.put(game2, 2);
-        int expected = 2;
-        Integer actual = playedTime.get(game2);
-        assertEquals(expected, actual);
-    }
+    //@Test
+   // public void shouldInstallTwo() {
+      //  Player player = new Player("Vasya");
+      //  Game g1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+      //  playedTime.put(game2, 2);
+       // int expected = 2;
+       // Integer actual = playedTime.get(game2);
+       // assertEquals(expected, actual);
+   // }
 
-    @Test
-    public void shouldInstallZero() {
-        Player player = new Player("Vasya");
-        Game g1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-        playedTime.put(null, 0);
-        int expected = 0;
-        Integer actual = playedTime.get(null);
-        assertEquals(expected, actual);
-    }
+   // @Test
+  //  public void shouldInstallZero() {
+       // Player player = new Player("Vasya");
+      //  Game g1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+       // playedTime.put(null, 0);
+       // int expected = 0;
+      //  Integer actual = playedTime.get(null);
+      //  assertEquals(expected, actual);
+   // }
 
   //  @Test
    // public void shouldPlay() {
