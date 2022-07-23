@@ -38,7 +38,7 @@ public class PlayerTest {
         player.installGame(game2);
         player.play(game2, 1);
         player.installGame(game3);
-        player.play(game2, 1);
+        player.play(game3, 1);
         Game actual = player.mostGameByGenre("Аркады");
         assertEquals(game1, actual);
     }
@@ -105,6 +105,7 @@ public class PlayerTest {
     }
 
 }
+
 
 
 
